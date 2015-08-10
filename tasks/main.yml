@@ -1,2 +1,23 @@
 ---
 # tasks file for ansible-openvswitch
+
+- name: Include distribution specific variables
+  include_vars: "{{ ansible_distribution }}.yml"
+  tags: openvswitch
+
+- include: CentOS.yml
+  when: ansible_distribution == "CentOS"
+  tags: openvswitch
+
+- include: Ubuntu.yml
+  when: ansible_distribution == "Ubuntu"
+  tags: openvswitch
+
+- include: Alpine.yml
+  when: ansible_distribution == "Alpine"
+  tags: openvswitch
+
+- name: Ensure OpenVSwitch services are started and enabled on boot
+  service: name={{ item }} state=started enabled=yes
+  with_items: openvswitch_services
+  tags: openvswitch

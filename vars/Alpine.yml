@@ -1,0 +1,9 @@
+---
+# vars file for ansible-openvswitch (Alpine specific)
+
+openvswitch_packages:
+  - openvswitch
+openvswitch_services:
+  - ovs-modules
+  - ovsdb-server
+  - ovs-vswitchd
