@@ -1,2 +1,8 @@
 ---
 # vars file for ansible-openvswitch (Ubuntu specific)
+
+openvswitch_packages:
+  - openvswitch-common
+  - openvswitch-switch
+openvswitch_services:
+  - openvswitch-switch
